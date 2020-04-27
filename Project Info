@@ -1,0 +1,43 @@
+Problem Introduction and Description: Given a list of integers find the Maximum and also find a given
+hidden key integer randomly placed in 2 different locations in the list. The list will be in a text file you
+generate. You populate your file with positive integers. You may use any form of inter-process
+communication (IPC) to partition the file/array into chunks and distribute work to more than one processes
+(if there are multiple ones) (e.g., pipes, signals, or additional (perhaps more sophisticated) inherent
+process system calls).
+
+In order for all of you to be tested on the same hidden keys, placed in exactly the same locations, you
+should use 3 hidden keys in your file. The hidden keys will be 3 negative integers (assume all are – 50)
+placed in the following locations in your lists:
+sizeof(list elements)/4, sizeof(list elements)/2, sizeof(list elements) x 3/4.
+This is how you construct the list of elements but then during manipulation you “forget” about where the
+hidden keys are located. The only information that you keep is that you are looking for 3 such elements of
+value -50.
+
+Objective: Use multiple processes and different process layout strategies, and IPC to speed up your
+searching on the Maximum element and speed up the identification of the three hidden elements. Again,
+in your search you assume that you do not know where these three hidden keys are. What is the optimal
+number of processes that help you do the job faster? You will compare against having a single process to
+do the work. You should also identify which processes (which pids) are the ones that locate the hidden
+keys.
+
+Remark: Record the time it takes for each of the programs to run and comment on your observations. Try
+it on lists of size 1k, 10k,100k, 1M.
+Hint: You should first load the file into an array then start working on the data.
+
+Input Format:
+Input will be in a text file. Each integer will be separated by a newline character (\n).
+Exp:
+100
+20
+35
+
+Output Format: You should print out the results in a text file. Every process that is created should print
+out their own process id and their parent’s process id. Then once you have computed the final max and
+hidden keys, you will print those out. Please follow this format:
+Hi I’m process 2 and my parent is 1.
+Hi I’m process 3 and my parent is 2.
+Hi I’m process 4 and my parent is 2.
+Max=50
+ Hi I am process 3 and I found the hidden key in position A[65].
+Hi I am process 7 and I found the hidden key in position A[123].
+Hi I am process 12 and I found the hidden key in position A[204].
